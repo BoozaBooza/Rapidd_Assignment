@@ -73,4 +73,3 @@ C:\Users\ADMIN\source\repos\Assignment_Rapidd\obj\Debug\Assignment_Rapidd.csproj
 C:\Users\ADMIN\source\repos\Assignment_Rapidd\obj\Debug\Assignment_Rapidd.csproj.CopyComplete
 C:\Users\ADMIN\source\repos\Assignment_Rapidd\obj\Debug\Assignment_Rapidd.dll
 C:\Users\ADMIN\source\repos\Assignment_Rapidd\obj\Debug\Assignment_Rapidd.pdb
-C:\Users\ADMIN\source\repos\Assignment_Rapidd\obj\Debug\Assignment_Rapidd.csprojAssemblyReference.cache
