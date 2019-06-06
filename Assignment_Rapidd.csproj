@@ -126,6 +126,8 @@
     </Compile>
     <Compile Include="Models\EmpDBHandle.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmpPosition.cs" />
+    <Compile Include="Models\OfficeLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,8 +164,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\AddEmployee.cshtml" />
     <Content Include="Views\Home\EmployeeDetails.cshtml" />
+    <Content Include="Views\Home\AddEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

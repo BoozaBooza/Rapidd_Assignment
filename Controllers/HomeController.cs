@@ -12,22 +12,59 @@ namespace Assignment_Rapidd.Controllers
         public ActionResult Index()
         {
             EmpDBHandle empDbHandle = new EmpDBHandle();
+            List<SelectListItem> empPosList = new List<SelectListItem>(); 
             ModelState.Clear();
+            foreach(EmpPosition empPos in empDbHandle.GetEmployeePositions())
+            {
+                empPosList.Add(new SelectListItem { Text = empPos.title , Value = Convert.ToString(empPos.posID) });                
+            }
+            ViewBag.EmployeePositions = empDbHandle.GetEmployeePositions();
+            ViewBag.OfficeLocations = empDbHandle.GetOfficeLocations();
             return View(empDbHandle.GetAllEmployeeData());
         }
 
-        public ActionResult AddEmployee()
+        public ActionResult AddEmployee(Employee emp)
         {
             EmpDBHandle empDbHandle = new EmpDBHandle();
-            ModelState.Clear();
+            ViewBag.EmployeePositions = empDbHandle.GetEmployeePositions();
+            ViewBag.OfficeLocations = empDbHandle.GetOfficeLocations();
+            if(ModelState.IsValid && (emp.empID != null))
+            {
+                empDbHandle.AddEmployee(emp);
+                return Redirect("Index");
+            }
             return View();
         }
-
-        public ActionResult EmployeeDetails()
+        [HttpPost]
+        public ActionResult EmployeeDetails(Employee employee)
         {
             EmpDBHandle empDbHandle = new EmpDBHandle();
-            ModelState.Clear();
-            return View();
+            empDbHandle.UpdateEmployeeDetails(employee);
+            return Redirect("/Home/Index");
+        }
+
+        public ActionResult EmployeeDetails(string id)
+        {
+            EmpDBHandle empDbHandle = new EmpDBHandle();
+            Employee emp = new Employee();
+            emp = empDbHandle.GetEmployeeDataByID(id);
+            ViewBag.EmployeePositions = empDbHandle.GetEmployeePositions();
+            ViewBag.OfficeLocations = empDbHandle.GetOfficeLocations();
+            return View(emp);
+        }
+
+        public ActionResult DeleteEmployee(string empID)
+        {
+            try
+            {
+                EmpDBHandle empDbHandle = new EmpDBHandle();
+                empDbHandle.DeleteEmployee(empID);
+                return Redirect("Index");
+            }
+            catch
+            {
+                return Redirect("Index");
+            }
         }
     }
 }

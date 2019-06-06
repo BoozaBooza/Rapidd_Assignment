@@ -4,106 +4,64 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Employee List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "AddEmployee")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.EmpID)
+            @Html.DisplayNameFor(model => model.empID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+            @Html.DisplayNameFor(model => model.fullName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OfficeLocation)
+            @Html.DisplayNameFor(model => model.officeLocation)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsActive)
+            @Html.DisplayNameFor(model => model.isActive)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Position)
+            @Html.DisplayNameFor(model => model.position)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PermanentAddress)
+            @Html.DisplayNameFor(model => model.dateOfJoining)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gender)
+            @Html.DisplayNameFor(model => model.dateOfLeaving)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
+            @Html.DisplayNameFor(model => model.emailId)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfJoining)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfLeaving)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Experience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LanguagesKnown)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EmpID)
+            @Html.DisplayFor(modelItem => item.empID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FullName)
+            @Html.ActionLink(item.fullName, "EmployeeDetails", new { id = item.empID } )
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OfficeLocation)
+            @Html.DisplayFor(modelItem => item.officeLocation)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
+            @Html.RadioButton(item.empID, item.isActive, item.isActive, htmlAttributes: new { disabled="disabled" })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Position)
+            @Html.DisplayFor(modelItem => item.position)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PermanentAddress)
+            @Html.DisplayFor(modelItem => item.dateOfJoining)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Gender)
+            @Html.DisplayFor(modelItem => item.dateOfLeaving)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
+            @Html.DisplayFor(modelItem => item.emailId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfJoining)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfLeaving)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Experience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LanguagesKnown)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "DeleteEmployee", new { empid = item.empID }, htmlAttributes: new { @class="btn btn-danger btn-xs" } )
         </td>
     </tr>
 }
